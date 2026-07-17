@@ -59,7 +59,7 @@ export function LifecycleDemo() {
         <div className={styles.intro}>
           <p className="eyebrow eyebrowDark">{productCopy.lifecycleEyebrow}</p>
           <h2 id="lifecycle-title">{headings.lifecycle}</h2>
-          <p className="sectionLead">{productCopy.lifecycleLead}</p>
+          <p className="sectionLead sectionLeadDark">{productCopy.lifecycleLead}</p>
         </div>
 
         <div className={styles.demo}>
