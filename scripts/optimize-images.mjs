@@ -1,11 +1,17 @@
 import { mkdir } from 'node:fs/promises'
 import sharp from 'sharp'
 
+const fullFrame = { left: 0, top: 0, width: 2048, height: 2048 }
 const masters = {
-  hero: 'artwork/masters/open-micro-hero-master.png',
-  exploded: 'artwork/masters/open-micro-exploded-master.png',
+  hero: {
+    input: 'artwork/masters/open-micro-hero-master.png',
+    crop: { left: 128, top: 320, width: 1664, height: 1664 },
+  },
+  exploded: { input: 'artwork/masters/open-micro-exploded-master.png', crop: fullFrame },
+  rear: { input: 'artwork/masters/open-micro-rear-master.png', crop: fullFrame },
+  top: { input: 'artwork/masters/open-micro-top-master.png', crop: fullFrame },
 }
-const socialMaster = 'artwork/masters/open-micro-social-master.png'
+const socialMaster = masters.hero
 const widths = [1536, 1024, 640]
 const outputDirectory = 'src/assets/product/generated'
 
@@ -13,13 +19,15 @@ await mkdir(outputDirectory, { recursive: true })
 await mkdir('public', { recursive: true })
 
 await Promise.all(
-  Object.entries(masters).flatMap(([name, input]) =>
+  Object.entries(masters).flatMap(([name, master]) =>
     widths.flatMap((width) => [
-      sharp(input)
+      sharp(master.input)
+        .extract(master.crop)
         .resize({ width, withoutEnlargement: true })
         .avif({ quality: 55 })
         .toFile(`${outputDirectory}/${name}-${width}.avif`),
-      sharp(input)
+      sharp(master.input)
+        .extract(master.crop)
         .resize({ width, withoutEnlargement: true })
         .webp({ quality: 80 })
         .toFile(`${outputDirectory}/${name}-${width}.webp`),
@@ -27,8 +35,9 @@ await Promise.all(
   ),
 )
 
-await sharp(socialMaster)
-  .resize(1200, 630, { fit: 'contain', background: { r: 244, g: 240, b: 235 } })
+await sharp(socialMaster.input)
+  .extract(socialMaster.crop)
+  .resize(1200, 630, { fit: 'cover', position: 'centre' })
   .png({ compressionLevel: 9 })
   .toFile('public/open-micro-social.png')
 

@@ -1,7 +1,17 @@
 import { useState, type FocusEvent } from 'react'
+import top640Avif from '../assets/product/generated/top-640.avif'
+import top1024Avif from '../assets/product/generated/top-1024.avif'
+import top1536Avif from '../assets/product/generated/top-1536.avif'
+import top640Webp from '../assets/product/generated/top-640.webp'
+import top1024Webp from '../assets/product/generated/top-1024.webp'
+import top1536Webp from '../assets/product/generated/top-1536.webp'
 import { controls, headings, productCopy } from '../content/product'
-import { ControlIcon } from './ControlIcon'
 import styles from './ControlsShowcase.module.css'
+
+const frameSizeMm = 130
+const deviceSizeMm = 96
+const deviceScale = deviceSizeMm / frameSizeMm
+const deviceInset = (1 - deviceScale) / 2
 
 
 export function ControlsShowcase() {
@@ -37,17 +47,29 @@ export function ControlsShowcase() {
         <div className={styles.mapWrap} onBlurCapture={handleBlur}>
           <div className={styles.orientation} aria-hidden="true">{productCopy.controlMapRear}</div>
           <div className={styles.deviceMap} aria-label={productCopy.controlMapLabel}>
-            <div className={styles.plate} aria-hidden="true" />
+            <picture className={styles.topPicture} aria-hidden="true">
+              <source
+                type="image/avif"
+                srcSet={`${top640Avif} 640w, ${top1024Avif} 1024w, ${top1536Avif} 1536w`}
+                sizes="(max-width: 900px) 100vw, 55vw"
+              />
+              <source
+                type="image/webp"
+                srcSet={`${top640Webp} 640w, ${top1024Webp} 1024w, ${top1536Webp} 1536w`}
+                sizes="(max-width: 900px) 100vw, 55vw"
+              />
+              <img src={top1024Webp} width="1536" height="1536" loading="lazy" decoding="async" alt="" />
+            </picture>
             {controls.map((control) => (
               <button
                 type="button"
                 key={control.id}
                 className={`${styles.control} ${styles[control.kind]} ${activeId === control.id ? styles.active : ''}`}
                 style={{
-                  left: `${((control.x - control.width / 2) / 96) * 100}%`,
-                  top: `${((control.y - control.height / 2) / 96) * 100}%`,
-                  width: `${(control.width / 96) * 100}%`,
-                  height: `${(control.height / 96) * 100}%`,
+                  left: `${(deviceInset + ((control.x - control.width / 2) / deviceSizeMm) * deviceScale) * 100}%`,
+                  top: `${(deviceInset + ((control.y - control.height / 2) / deviceSizeMm) * deviceScale) * 100}%`,
+                  width: `${(control.width / deviceSizeMm) * deviceScale * 100}%`,
+                  height: `${(control.height / deviceSizeMm) * deviceScale * 100}%`,
                 }}
                 aria-label={`${control.name}: ${control.role}`}
                 aria-pressed={activeId === control.id}
@@ -58,10 +80,6 @@ export function ControlsShowcase() {
                 onFocus={() => setActiveId(control.id)}
                 onClick={() => setActiveId(control.id)}
               >
-                <span aria-hidden="true">
-                  <ControlIcon id={control.id} />
-                  <small>{control.legend}</small>
-                </span>
               </button>
             ))}
           </div>
