@@ -60,7 +60,6 @@ export function LifecycleDemo() {
           <p className="eyebrow eyebrowDark">{productCopy.lifecycleEyebrow}</p>
           <h2 id="lifecycle-title">{headings.lifecycle}</h2>
           <p className="sectionLead">{productCopy.lifecycleLead}</p>
-          <p className={styles.qualifier}>{productCopy.lifecycleQualifier}</p>
         </div>
 
         <div className={styles.demo}>

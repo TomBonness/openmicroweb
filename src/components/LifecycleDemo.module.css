@@ -71,6 +71,10 @@
   content: '';
 }
 
+.solid::after {
+  opacity: 1;
+}
+
 .breathe::after {
   animation: breathe var(--state-period) ease-in-out infinite;
 }

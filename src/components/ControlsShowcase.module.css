@@ -104,6 +104,31 @@
     color var(--hover-duration) var(--motion-ease);
 }
 
+.control > span {
+  display: grid;
+  place-items: center;
+  gap: clamp(0.12rem, 0.5vw, 0.35rem);
+  width: 100%;
+  min-width: 0;
+}
+
+.control svg {
+  width: clamp(14px, 28%, 25px);
+  height: auto;
+  overflow: visible;
+}
+
+.control small {
+  max-width: 90%;
+  overflow: hidden;
+  font-size: clamp(0.42rem, 0.72vw, 0.62rem);
+  font-weight: 680;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .key,
 .wide-key {
   border-radius: 13%;
@@ -122,8 +147,13 @@
 }
 
 .joystick {
-  background: radial-gradient(circle at 35% 30%, #60636a, #25272c 70%);
-  color: #f4f4f2;
+  border: 1px solid #9da1a8;
+  background:
+    radial-gradient(circle, #f7f7f6 0 24%, #aeb2b9 25% 31%, #e7e8ea 32% 52%, #8e929a 53% 57%, #d4d6da 58% 100%);
+  box-shadow:
+    inset 0 1px 2px rgb(255 255 255 / 88%),
+    0 5px 9px rgb(17 18 20 / 18%);
+  color: #3c4047;
 }
 
 .touch {
@@ -148,7 +178,7 @@
 .joystick:hover,
 .joystick:focus-visible,
 .joystick.active {
-  color: #fff;
+  color: #1f5fc9;
 }
 
 @media (max-width: 900px) {

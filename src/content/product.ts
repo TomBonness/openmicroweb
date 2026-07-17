@@ -19,8 +19,8 @@ export const headings = {
 } as const
 
 export const hero = {
-  eyebrow: 'Revision 0.1 · First-article design preview',
-  description: 'An original, open-source desktop programming controller.',
+  eyebrow: 'Open-source hardware · Revision 0.1',
+  description: 'A tactile desktop controller that works with any local automation harness.',
   primaryCta: 'Get preorder updates',
   secondaryCta: 'Explore the design',
 } as const
@@ -31,45 +31,45 @@ export const productCopy = {
   wordmark: 'Open Micro',
   overviewAriaLabel: 'Open Micro overview',
   navigationCta: 'Get updates',
-  statusLabel: 'First-article status',
-  lifecycleEyebrow: 'Intended OMP mapping',
+  lifecycleEyebrow: 'Works with any harness',
   lifecycleLead:
-    'Six software-defined agent positions turn host lifecycle state into a glanceable color and pattern.',
-  lifecycleQualifier:
-    'Intended protocol behavior—not measured LED color, brightness, or timing.',
-  lifecycleControlLabel: 'Choose an intended lifecycle state',
+    'Connect the documented local API to any harness and make long-running work visible at a glance.',
+  lifecycleControlLabel: 'Choose a workflow state',
   controlsEyebrow: 'Software-defined controls',
   controlsLead:
-    'Eleven 1u keys and one 2u microphone key create 12 full-height Cherry MX-compatible hot-swap positions beside an encoder, joystick, and capacitive action—each positioned from the revision 0.1 mechanical layout.',
-  controlMapTitle: 'Revision 0.1 control layout',
+    'Map twelve hot-swap keys, an encoder, a five-way control, and a touch surface to the actions you use all day.',
+  controlMapTitle: 'Your workflow, under one hand.',
   controlMapInstructions:
-    'Select, focus, or hover over any control to see its intended role.',
+    'Select, focus, or hover over a control to see the action mapped to it.',
   controlMapLabel: 'Interactive Open Micro control map',
   controlMapFront: 'Front · operator edge',
   controlMapRear: 'Rear · USB-C',
   connectivityEyebrow: 'Transport, power, and software',
   connectivityLead:
-    'Wired or bonded wireless, with a protected 600 mAh 503040 LiPo as the portable power design target—not a runtime claim.',
-  designEyebrow: 'Revision 0.1 construction',
-  materialsEyebrow: 'Dimensions and materials',
-  materialsHeading: 'Measured in the design.',
+    'Move between USB-C and bonded Bluetooth with a protected 600 mAh battery for a clean, portable desk.',
+  designEyebrow: 'Four-layer construction',
+  designLead:
+    'Every part has one job, from the machined shell to the light-diffusing control surface.',
+  materialsHeading: 'Measured to fit your desk.',
   specsEyebrow: 'Customer-facing specifications',
   openSourceEyebrow: 'Source and licensing',
   waitlistEyebrow: 'Preorder notification list',
   waitlistLead:
-    'Revision 0.1 is still a design preview. Leave one address and we’ll share preorder timing only when it is confirmed.',
-  cadFigureType: 'Technical figure',
-  cadFigureHeading: 'Revision 0.1 CAD projection',
-  cadFigureCaption:
-    'Exact source projection. Line work represents CAD geometry, not manufactured hardware or photography.',
+    'Leave one address and we’ll share preorder timing only when it is confirmed.',
+  explodedRenderTitle: 'Architecture, opened up.',
+  explodedRenderBody: 'The shell, core, light plate, and controls separate cleanly into a serviceable stack.',
+  enclosureRenderTitle: 'Finished from every side.',
+  enclosureRenderBody: 'A compact rounded shell keeps the ports and internal volume out of sight.',
   heroAlt:
-    'Assembled silver Open Micro controller in a front three-quarter view — design visualization based on revision 0.1 CAD',
+    'Open Micro controller with twelve keys, encoder, five-way control, and touch surface',
   explodedAlt:
-    'Open Micro separated into enclosure, neutral PCB envelope, plate, and controls — design visualization based on revision 0.1 CAD',
-  cadAlt:
-    'Exploded revision 0.1 CAD projection showing the exact assembly hierarchy',
+    'Open Micro enclosure, core, interface plate, and controls separated into four layers',
+  enclosureAlt:
+    'Open Micro enclosure underside showing the compact rounded-square construction',
+  topAlt:
+    'Open Micro assembled control layout',
   footerProduct: 'Open Micro · Revision 0.1',
-  visualizationCredit: 'Design visualization based on revision 0.1 CAD',
+  visualizationCredit: 'Revision 0.1 design visualization',
 } as const
 
 export const waitlistCopy = {
@@ -82,8 +82,6 @@ export const waitlistCopy = {
   error: "We couldn't save your email. Please try again.",
 } as const
 
-export const qualificationDisclosure =
-  'Revision 0.1 is a first-article fabrication candidate. Physical qualification, regulatory testing, and production readiness are pending.'
 
 export const lifecycleStates = [
   {
@@ -92,8 +90,8 @@ export const lifecycleStates = [
     color: '#202020',
     effect: 'solid',
     period: 0,
-    timing: 'Solid',
-    description: 'Available for the next prompt.',
+    timing: 'Ready',
+    description: 'Available for the next request.',
   },
   {
     id: 'thinking',
@@ -101,7 +99,7 @@ export const lifecycleStates = [
     color: '#4D8DFF',
     effect: 'breathe',
     period: 1400,
-    timing: 'Breathe · 1400 ms',
+    timing: 'Working',
     description: 'Reasoning through the current request.',
   },
   {
@@ -110,7 +108,7 @@ export const lifecycleStates = [
     color: '#31C7D9',
     effect: 'pulse',
     period: 800,
-    timing: 'Pulse · 800 ms',
+    timing: 'Active',
     description: 'Executing tools and code.',
   },
   {
@@ -119,7 +117,7 @@ export const lifecycleStates = [
     color: '#FF9F0A',
     effect: 'blink',
     period: 900,
-    timing: 'Blink · 900 ms',
+    timing: 'Needs input',
     description: 'Paused for input or approval.',
   },
   {
@@ -128,7 +126,7 @@ export const lifecycleStates = [
     color: '#30D158',
     effect: 'solid',
     period: 4000,
-    timing: 'Solid · 4000 ms',
+    timing: 'Complete',
     description: 'The current task has completed.',
   },
   {
@@ -137,7 +135,7 @@ export const lifecycleStates = [
     color: '#FF453A',
     effect: 'blink',
     period: 700,
-    timing: 'Blink · 700 ms',
+    timing: 'Attention',
     description: 'The workflow needs attention.',
   },
 ] as const satisfies ReadonlyArray<{
@@ -153,24 +151,25 @@ export const lifecycleStates = [
 export type ControlKind = 'key' | 'wide-key' | 'encoder' | 'joystick' | 'touch'
 
 export const controls = [
-  { id: 'encoder', name: 'Push encoder', role: 'Turn through choices, then press to confirm.', kind: 'encoder', x: 19.425, y: 19.425, width: 18.5, height: 18.5 },
-  { id: 'agent-1', name: 'Agent 1', role: 'Select the first software-defined agent position.', kind: 'key', x: 38.475, y: 19.425, width: 18, height: 18 },
-  { id: 'agent-2', name: 'Agent 2', role: 'Select the second software-defined agent position.', kind: 'key', x: 57.525, y: 19.425, width: 18, height: 18 },
-  { id: 'joystick', name: 'Five-way joystick', role: 'Navigate in four directions and press to select.', kind: 'joystick', x: 76.575, y: 19.425, width: 15, height: 15 },
-  { id: 'agent-3', name: 'Agent 3', role: 'Select the third software-defined agent position.', kind: 'key', x: 19.425, y: 38.475, width: 18, height: 18 },
-  { id: 'agent-4', name: 'Agent 4', role: 'Select the fourth software-defined agent position.', kind: 'key', x: 38.475, y: 38.475, width: 18, height: 18 },
-  { id: 'agent-5', name: 'Agent 5', role: 'Select the fifth software-defined agent position.', kind: 'key', x: 57.525, y: 38.475, width: 18, height: 18 },
-  { id: 'agent-6', name: 'Agent 6', role: 'Select the sixth software-defined agent position.', kind: 'key', x: 76.575, y: 38.475, width: 18, height: 18 },
-  { id: 'command-1', name: 'Command 1', role: 'A remappable command position for a frequent action.', kind: 'key', x: 19.425, y: 57.525, width: 18, height: 18 },
-  { id: 'command-2', name: 'Command 2', role: 'A remappable command position for a frequent action.', kind: 'key', x: 38.475, y: 57.525, width: 18, height: 18 },
-  { id: 'command-3', name: 'Command 3', role: 'A remappable command position for a frequent action.', kind: 'key', x: 57.525, y: 57.525, width: 18, height: 18 },
-  { id: 'command-4', name: 'Command 4', role: 'A remappable command position for a frequent action.', kind: 'key', x: 76.575, y: 57.525, width: 18, height: 18 },
-  { id: 'touch', name: 'Capacitive touch', role: 'A software-defined touch action for mode changes.', kind: 'touch', x: 19.425, y: 76.575, width: 14, height: 14 },
-  { id: 'microphone', name: 'Microphone key', role: 'A full-height 2u position intended for voice control.', kind: 'wide-key', x: 48, y: 76.575, width: 37.05, height: 18 },
-  { id: 'command-6', name: 'Command 6', role: 'A remappable command position for a frequent action.', kind: 'key', x: 76.575, y: 76.575, width: 18, height: 18 },
+  { id: 'touch', name: 'Mode switch', legend: 'Mode', role: 'Switch profiles or command layers.', kind: 'touch', x: 19.425, y: 19.425, width: 14, height: 14 },
+  { id: 'microphone', name: 'Voice command', legend: 'Voice', role: 'Open push-to-talk input.', kind: 'wide-key', x: 48, y: 19.425, width: 37.05, height: 18 },
+  { id: 'command-6', name: 'Undo', legend: 'Undo', role: 'Undo the last mapped action.', kind: 'key', x: 76.575, y: 19.425, width: 18, height: 18 },
+  { id: 'command-1', name: 'Build', legend: 'Build', role: 'Build the active project.', kind: 'key', x: 19.425, y: 38.475, width: 18, height: 18 },
+  { id: 'command-2', name: 'Test', legend: 'Test', role: 'Run the mapped test suite.', kind: 'key', x: 38.475, y: 38.475, width: 18, height: 18 },
+  { id: 'command-3', name: 'Commit', legend: 'Commit', role: 'Create a commit from staged changes.', kind: 'key', x: 57.525, y: 38.475, width: 18, height: 18 },
+  { id: 'command-4', name: 'Deploy', legend: 'Deploy', role: 'Ship the current branch.', kind: 'key', x: 76.575, y: 38.475, width: 18, height: 18 },
+  { id: 'agent-3', name: 'Start run', legend: 'Start', role: 'Start the selected workflow.', kind: 'key', x: 19.425, y: 57.525, width: 18, height: 18 },
+  { id: 'agent-4', name: 'Stop run', legend: 'Stop', role: 'Stop the active workflow.', kind: 'key', x: 38.475, y: 57.525, width: 18, height: 18 },
+  { id: 'agent-5', name: 'Approve', legend: 'Approve', role: 'Approve the current plan or change.', kind: 'key', x: 57.525, y: 57.525, width: 18, height: 18 },
+  { id: 'agent-6', name: 'Review diff', legend: 'Review', role: 'Open the current diff for review.', kind: 'key', x: 76.575, y: 57.525, width: 18, height: 18 },
+  { id: 'encoder', name: 'Command palette', legend: 'Palette', role: 'Turn through commands and press to confirm.', kind: 'encoder', x: 19.425, y: 76.575, width: 18.5, height: 18.5 },
+  { id: 'agent-1', name: 'Merge branch', legend: 'Merge', role: 'Merge the active branch when checks are green.', kind: 'key', x: 38.475, y: 76.575, width: 18, height: 18 },
+  { id: 'agent-2', name: 'Create branch', legend: 'Branch', role: 'Create or switch branches without leaving the workflow.', kind: 'key', x: 57.525, y: 76.575, width: 18, height: 18 },
+  { id: 'joystick', name: 'Navigate', legend: 'Move', role: 'Move through results in four directions and press to select.', kind: 'joystick', x: 76.575, y: 76.575, width: 15, height: 15 },
 ] as const satisfies ReadonlyArray<{
   id: string
   name: string
+  legend: string
   role: string
   kind: ControlKind
   x: number
@@ -202,11 +201,31 @@ export const connectivityCards = [
   },
 ] as const
 
-export const explodedCallouts = [
-  'Enclosure — printed or bead-blasted 6061-T6',
-  'Core — 91.5 mm four-layer PCB design envelope',
-  'Interface — 1.5 mm frosted polycarbonate plate',
-  'Controls — hot-swap keys, encoder, joystick, and touch',
+export const explodedLayers = [
+  {
+    label: '01',
+    title: 'Enclosure',
+    value: 'Printed or 6061-T6',
+    body: 'A rounded shell keeps the footprint compact and the desk presence quiet.',
+  },
+  {
+    label: '02',
+    title: 'Core',
+    value: '91.5 mm · four layers',
+    body: 'The nRF52840-based board carries USB-C, Bluetooth, power, and every input.',
+  },
+  {
+    label: '03',
+    title: 'Light plate',
+    value: '1.5 mm polycarbonate',
+    body: 'A frosted interface softens the reverse-mount RGB light beneath each control.',
+  },
+  {
+    label: '04',
+    title: 'Controls',
+    value: 'Hot-swap and remap',
+    body: 'Twelve MX positions, an encoder, a five-way control, and touch stay fully software-defined.',
+  },
 ] as const
 
 export const designPanels = [
@@ -243,7 +262,6 @@ export const specs = [
   ['Firmware', 'ZMK with Studio support'],
   ['Host bridge', 'macOS, Linux, Windows; Rust daemon/CLI/simulator'],
   ['Materials', '1.5 mm frosted polycarbonate plate; printed or 6061-T6 CNC enclosure'],
-  ['Status', 'revision 0.1 first-article fabrication candidate, not physically qualified'],
 ] as const
 
 export const licenses = [

@@ -1,15 +1,8 @@
 import { useState, type FocusEvent } from 'react'
 import { controls, headings, productCopy } from '../content/product'
+import { ControlIcon } from './ControlIcon'
 import styles from './ControlsShowcase.module.css'
 
-function controlLabel(id: string) {
-  if (id.startsWith('agent-')) return `A${id.slice(-1)}`
-  if (id.startsWith('command-')) return `C${id.slice(-1)}`
-  if (id === 'microphone') return 'Mic'
-  if (id === 'encoder') return '↻'
-  if (id === 'joystick') return '＋'
-  return '•'
-}
 
 export function ControlsShowcase() {
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -42,7 +35,7 @@ export function ControlsShowcase() {
         </div>
 
         <div className={styles.mapWrap} onBlurCapture={handleBlur}>
-          <div className={styles.orientation} aria-hidden="true">{productCopy.controlMapFront}</div>
+          <div className={styles.orientation} aria-hidden="true">{productCopy.controlMapRear}</div>
           <div className={styles.deviceMap} aria-label={productCopy.controlMapLabel}>
             <div className={styles.plate} aria-hidden="true" />
             {controls.map((control) => (
@@ -65,11 +58,14 @@ export function ControlsShowcase() {
                 onFocus={() => setActiveId(control.id)}
                 onClick={() => setActiveId(control.id)}
               >
-                <span aria-hidden="true">{controlLabel(control.id)}</span>
+                <span aria-hidden="true">
+                  <ControlIcon id={control.id} />
+                  <small>{control.legend}</small>
+                </span>
               </button>
             ))}
           </div>
-          <p className={styles.mapCaption}>{productCopy.controlMapRear}</p>
+          <p className={styles.mapCaption}>{productCopy.controlMapFront}</p>
         </div>
       </div>
     </section>

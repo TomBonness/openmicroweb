@@ -1,4 +1,4 @@
-import { headings, productCopy, qualificationDisclosure, specs } from '../content/product'
+import { headings, productCopy, specs } from '../content/product'
 import styles from './SpecsGrid.module.css'
 
 export function SpecsGrid() {
@@ -10,7 +10,6 @@ export function SpecsGrid() {
             <p className="eyebrow">{productCopy.specsEyebrow}</p>
             <h2 id="specs-title">{headings.specifications}</h2>
           </div>
-          <p className={styles.disclosure}>{qualificationDisclosure}</p>
         </div>
 
         <dl className={styles.grid}>

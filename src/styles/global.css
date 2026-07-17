@@ -104,10 +104,19 @@ button {
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   justify-self: start;
   font-size: 0.95rem;
   font-weight: 680;
   letter-spacing: -0.025em;
+}
+
+.wordmark img {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 3px 7px rgb(17 18 20 / 10%));
 }
 
 .navLinks {
@@ -145,6 +154,9 @@ button {
 }
 
 .navCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 44px;
   justify-self: end;
   padding: 0.78rem 1.15rem;
@@ -259,39 +271,10 @@ main {
   background: var(--surface);
 }
 
-.statusStrip {
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-  background: var(--surface);
-}
-
-.statusStripInner {
-  display: grid;
-  min-height: 88px;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 1.2rem var(--gutter);
-}
-
-.statusStrip strong {
-  font-size: 0.72rem;
-  font-weight: 720;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.statusStrip p {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  line-height: 1.5;
-}
 
 .revealSection {
   opacity: 1;
+  transform-origin: center top;
 }
 
 .connectivityGrid,
@@ -348,6 +331,52 @@ main {
 
 .designSection {
   background: #efefec;
+}
+
+.materialsIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(420px, 1.28fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: center;
+}
+
+.materialsIntro h2 {
+  max-width: 8ch;
+}
+
+.designProjection {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 260px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(circle at 50% 55%, rgb(77 141 255 / 13%), transparent 45%),
+    linear-gradient(145deg, rgb(255 255 255 / 72%), rgb(223 224 223 / 55%));
+}
+
+.designProjection::after {
+  position: absolute;
+  right: 16%;
+  bottom: 13%;
+  left: 16%;
+  height: 20%;
+  border-radius: 50%;
+  background: rgb(17 18 20 / 13%);
+  content: '';
+  filter: blur(24px);
+}
+
+.designProjection img {
+  position: relative;
+  z-index: 1;
+  width: 126%;
+  max-width: none;
+  opacity: 0.76;
+  mix-blend-mode: multiply;
+  transform: translateY(-2%);
 }
 
 .designGrid .editorialCard {
@@ -441,9 +470,13 @@ main {
     display: none;
   }
 
-  .statusStripInner {
+
+  .materialsIntro {
     grid-template-columns: 1fr;
-    gap: 0.45rem;
+  }
+
+  .designProjection {
+    min-height: 220px;
   }
 
   .connectivityGrid,

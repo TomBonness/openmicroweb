@@ -4,6 +4,8 @@
    xmlns="http://www.w3.org/2000/svg"
    width="800.0"
    height="240.0"
+   viewBox="0 0 800 240"
+   preserveAspectRatio="xMidYMid meet"
 
 >
     <g transform="scale(1.875, -1.875)   translate(106.66666666666667,-106.66666666666667)" stroke-width="0.35"  fill="none">
