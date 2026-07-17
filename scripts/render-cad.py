@@ -70,6 +70,49 @@ def assign(obj: bpy.types.Object, finish: bpy.types.Material) -> None:
     obj.data.materials.append(finish)
 
 
+def duplicate_mesh(obj: bpy.types.Object, name: str) -> bpy.types.Object:
+    duplicate = obj.copy()
+    duplicate.data = obj.data.copy()
+    duplicate.name = name
+    obj.users_collection[0].objects.link(duplicate)
+    return duplicate
+
+
+def world_top(obj: bpy.types.Object) -> float:
+    return max((obj.matrix_world @ Vector(corner)).z for corner in obj.bound_box)
+
+
+def apply_boolean(obj: bpy.types.Object, cutter: bpy.types.Object, operation: str) -> None:
+    modifier = obj.modifiers.new(name=f"legend-{operation.lower()}", type="BOOLEAN")
+    modifier.operation = operation
+    modifier.solver = "EXACT"
+    modifier.object = cutter
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
+    bpy.ops.object.modifier_apply(modifier=modifier.name)
+    obj.select_set(False)
+
+
+def flush_keycap_legends(parts: list[bpy.types.Object]) -> None:
+    by_name = {obj.name: obj for obj in parts}
+    legends = [obj for obj in parts if obj.name.endswith("-legend")]
+    for legend in legends:
+        keycap = by_name[legend.name.removesuffix("-legend")]
+        keycap_source = duplicate_mesh(keycap, f"{keycap.name}-flush-source")
+        keycap_top = world_top(keycap_source)
+        legend_tool = duplicate_mesh(legend, f"{legend.name}-flush-tool")
+        apply_boolean(keycap, legend_tool, "DIFFERENCE")
+        apply_boolean(legend, keycap_source, "INTERSECT")
+        bpy.context.view_layer.update()
+        legend_top = world_top(legend)
+        bpy.data.objects.remove(legend_tool, do_unlink=True)
+        bpy.data.objects.remove(keycap_source, do_unlink=True)
+
+        if legend_top > keycap_top + 1e-7:
+            raise RuntimeError(f"Legend protrudes above keycap: {legend.name}")
+    print(f"Partitioned {len(legends)} keycaps into bodies and flush two-color legend inlays")
+
+
 def look_at(obj: bpy.types.Object, target: tuple[float, float, float]) -> None:
     direction = Vector(target) - obj.location
     obj.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()
@@ -167,6 +210,7 @@ def main() -> None:
     legends = [obj for obj in parts if obj.name.endswith("-legend")]
     if missing or len(keycaps) != 12 or len(legends) != 12:
         raise RuntimeError(f"Unexpected CAD assembly: missing={sorted(missing)}, keycaps={len(keycaps)}, legends={len(legends)}")
+    flush_keycap_legends(parts)
 
     silver = material("Silver bead-blasted aluminum", (0.4, 0.44, 0.49, 1), metallic=0.88, roughness=0.3, microtexture=0.15)
     brushed_steel = material("Satin steel", (0.32, 0.36, 0.41, 1), metallic=0.9, roughness=0.24, microtexture=0.08)
