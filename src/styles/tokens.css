@@ -1,0 +1,24 @@
+:root {
+  --canvas: #F7F7F5;
+  --surface: #FFFFFF;
+  --graphite: #0B0C0F;
+  --text-primary: #111214;
+  --text-secondary: #5D6067;
+  --hairline: #D9DBDF;
+  --accent: #4D8DFF;
+  --content-max: 1280px;
+  --radius-small: 20px;
+  --radius-large: 28px;
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+  --hover-duration: 180ms;
+  --reveal-duration: 600ms;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  --lead-size: clamp(1rem, 1.4vw, 1.25rem);
+  --gutter: 24px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 48px;
+  }
+}
