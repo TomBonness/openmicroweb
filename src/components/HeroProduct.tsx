@@ -54,6 +54,7 @@ export function HeroProduct() {
           height="374"
           alt={brandCopy.name}
         />
+        <p className={styles.desktopKicker}>{hero.indexLabel}</p>
         <div className={styles.crosshair} aria-hidden="true">
           <span />
         </div>
