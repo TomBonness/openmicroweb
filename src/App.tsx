@@ -119,7 +119,7 @@ function App() {
                 <p>{brandCopy.statementBody}</p>
               </div>
               <div className="labMark" aria-hidden="true">
-                <span>Design / Build</span>
+                <span>KM / RL</span>
                 <img
                   src="/brand/kettle-moraine-mark.png"
                   width="512"
@@ -127,7 +127,7 @@ function App() {
                   alt=""
                   loading="lazy"
                 />
-                <span>Hardware / Software</span>
+                <span>Open / 01</span>
               </div>
             </div>
           </section>

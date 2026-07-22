@@ -450,32 +450,51 @@ main {
 }
 
 .labMark {
+  position: relative;
   display: grid;
-  align-items: center;
-  gap: 1rem;
+  overflow: hidden;
+  width: min(100%, 260px);
+  aspect-ratio: 1;
+  border: 1px solid var(--hairline);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 50% 50%, rgb(5 72 253 / 8%), transparent 46%),
+    linear-gradient(rgb(17 18 20 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(17 18 20 / 4%) 1px, transparent 1px),
+    var(--surface);
+  background-size: auto, 28px 28px, 28px 28px, auto;
+  box-shadow: 0 24px 60px rgb(17 18 20 / 8%);
+  justify-self: end;
+  place-items: center;
 }
 
 .labMark img {
-  width: min(100%, 250px);
-  margin: 0 auto;
-  filter: drop-shadow(0 24px 40px rgb(5 72 253 / 12%));
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 68%;
+  height: auto;
+  filter: drop-shadow(0 18px 28px rgb(5 72 253 / 13%));
 }
 
 .labMark span {
+  position: absolute;
+  z-index: 2;
   color: var(--text-secondary);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-align: center;
+  font-size: 0.55rem;
+  font-weight: 740;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .labMark span:first-child {
-  justify-self: start;
+  top: 1.1rem;
+  left: 1.15rem;
 }
 
 .labMark span:last-child {
-  justify-self: end;
+  right: 1.15rem;
+  bottom: 1.1rem;
 }
 
 .siteFooter {
@@ -547,8 +566,7 @@ main {
 
   .labMark {
     grid-column: 1 / -1;
-    grid-template-columns: 1fr minmax(170px, 220px) 1fr;
-    width: 100%;
+    justify-self: center;
   }
 }
 
@@ -590,7 +608,7 @@ main {
   }
 
   .labMark {
-    width: min(74vw, 290px);
+    width: min(64vw, 240px);
     margin: 1rem auto 0;
   }
 

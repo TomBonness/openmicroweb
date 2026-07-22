@@ -30,8 +30,9 @@ export const brandCopy = {
 } as const
 
 export const hero = {
-  eyebrow: 'Product 01 · Open-source by design',
-  description: 'A beautifully focused control surface for the work you do every day.',
+  eyebrow: 'Open-source control surface',
+  indexLabel: 'Product 01 · Open-source by design',
+  description: 'Hardware made to study, change, and build on.',
   primaryCta: 'Keep me updated',
   secondaryCta: 'See how it’s built',
 } as const
