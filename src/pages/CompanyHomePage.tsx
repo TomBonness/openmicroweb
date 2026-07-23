@@ -24,12 +24,10 @@ export function CompanyHomePage() {
         <div className={styles.heroCrosshair} aria-hidden="true"><span /></div>
         <div className={styles.heroInner}>
           <header className={styles.heroTopline}>
-            <p><span aria-hidden="true" />Kettle Moraine Research Labs</p>
             <p>Independent product lab</p>
           </header>
 
           <div className={styles.heroTitle}>
-            <p aria-hidden="true">KM / RL</p>
             <h1 id="company-heading" aria-label="Tools for clearer work.">
               <span aria-hidden="true">Tools for</span>
               <span aria-hidden="true">clearer work.</span>
@@ -56,11 +54,11 @@ export function CompanyHomePage() {
       <section className={styles.products} id="products" aria-labelledby="products-heading">
         <div className={styles.productsInner}>
           <header className={styles.productsIntro}>
-            <p className="eyebrow">The tools</p>
-            <div>
-              <h2 id="products-heading">Physical controls. Local software.</h2>
-              <p>Two focused products, each built to keep the person using it in control.</p>
-            </div>
+            <h2 id="products-heading">
+              <span>Physical controls.</span>
+              <span>Local software.</span>
+            </h2>
+            <p>Two focused products, each built to keep the person using it in control.</p>
           </header>
 
           <div className={styles.featureStack}>
