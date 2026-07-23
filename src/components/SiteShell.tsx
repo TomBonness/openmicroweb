@@ -56,6 +56,35 @@ export function SiteShell({ children, currentPath, navigation, cta }: SiteShellP
             ))}
           </div>
           {cta ? <a className="navCta" href={cta.href}>{cta.label}</a> : <span className="navSpacer" />}
+          <details className="mobileNav">
+            <summary>
+              <span>Menu</span>
+              <span className="mobileNavIcon" aria-hidden="true"><i /><i /></span>
+            </summary>
+            <div className="mobileNavPanel">
+              <div className="mobileNavLinks">
+                {navigation.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    aria-current={currentPageValue(item.href, currentPath)}
+                  >
+                    {item.label}
+                    <span aria-hidden="true">{item.href.includes('#') ? '↓' : '↗'}</span>
+                  </a>
+                ))}
+              </div>
+              {cta && (
+                <a
+                  className="mobileNavCta"
+                  href={cta.href}
+                  aria-label={`${cta.label} — mobile navigation`}
+                >
+                  {cta.label}
+                </a>
+              )}
+            </div>
+          </details>
         </nav>
       </header>
 
