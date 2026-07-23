@@ -30,7 +30,7 @@ export function VoiceTrace({ compact = false, id }: VoiceTraceProps) {
     <figure
       className={`${styles.instrument} ${compact ? styles.compact : ''}`}
       id={id}
-      style={{ '--product-accent': 'var(--lavtype-accent)' } as React.CSSProperties}
+      style={{ '--product-accent': 'var(--accent)' } as React.CSSProperties}
     >
       <figcaption className={styles.header}>
         <img src="/products/lavtype/lavtype-icon.png" width="1024" height="1024" alt="" />

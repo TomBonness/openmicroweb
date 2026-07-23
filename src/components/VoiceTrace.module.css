@@ -1,5 +1,5 @@
 .instrument {
-  --product-accent: var(--lavtype-accent);
+  --product-accent: var(--accent);
   display: grid;
   width: 100%;
   min-width: 0;
